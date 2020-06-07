@@ -2,7 +2,7 @@
 # Author: Florian Zubeil, 2017
 
 calc_cosine_path <- "calc_cosine.exe" 	#Set path to calc_cosine.exe here
-msconvert_path <- "msconvert.exe" 		#Set path to msconvert here
+#msconvert_path <- "msconvert.exe" 		#Set path to msconvert here. Skipped in this version
 filter_pattern <- "**"
 num_cores <- 12
 
@@ -24,11 +24,11 @@ if (!require("RColorBrewer")) {
 
 
 #batch convert *.d files to mzXML using Proteowizard msconvert.exe
-files <- list.files(path=".", pattern=filter_pattern, full.names=T, recursive=F)
-system.time(lapply(files, function(file) {
-	msconvert <- msconvert_path
-	system2(msconvert, c(file, "--mzXML", "-o mzXML\\", "--zlib", "--filter \"peakPicking vendor msLevel=1-1\"", "--filter \"threshold absolute 10000 most-intense\""))
-}))
+#files <- list.files(path=".", pattern=filter_pattern, full.names=T, recursive=F)
+#system.time(lapply(files, function(file) {
+#	msconvert <- msconvert_path
+#	system2(msconvert, c(file, "--mzXML", "-o mzXML\\", "--zlib", "--filter \"peakPicking vendor msLevel=1-1\"", "--filter \"threshold absolute 10000 most-intense\""))
+#}))
 
 #perform peak picking etc. using xcms
 setwd("mzXML")
